@@ -1,0 +1,16 @@
+{
+  "name": "NANTA",
+  "version": "1.0",
+  "description": "Save notes and tabs, view previous entries",
+  "permissions": ["storage", "tabs"],
+  "manifest_version": 2,
+  "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+  },
+  "icons": {
+      "16": "icon16_light.png",
+      "48": "icon48_light.png",
+      "128": "icon128_light.png"
+  }
+}
