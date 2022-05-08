@@ -2,23 +2,24 @@
   "name": "NANTA",
   "version": "1.0",
   "description": "Save notes and tabs, view previous entries",
-  "permissions": [
-    "storage",
-    "tabs"
+  "manifest_version": 2,
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "run_at": "document_start",
+      "js": ["script-loader.js"]
+    }
   ],
-  "host_permissions": [
-    "http://192.168.1.144:*/*"
-  ],
-  "manifest_version": 3,
-  "background": {
-    "service_worker": "background.js"
-  },
+  "web_accessible_resources": ["nanta-ui-logic-script.js"],
   "icons": {
-      "16": "icon16_dark.png",
-      "48": "icon48_dark.png",
-      "128": "icon128_dark.png"
+    "16": "icon16_dark.png",
+    "48": "icon48_dark.png",
+    "128": "icon128_dark.png"
   },
-  "action": {
-    "default_popup": "./ui/index.html"
+  "browser_action": {
+    "default_icon": "icon16_dark.png"
+  },
+  "background": {
+    "scripts": ["background.js"]
   }
 }

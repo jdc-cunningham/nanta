@@ -39,3 +39,19 @@ Seems to be some promise issue with fetch
 6:02 PM
 Damn I'm still failing
 
+Dayum look at this [answer](https://stackoverflow.com/questions/9515704/use-a-content-script-to-access-the-page-context-variables-and-functions) lol "table of contents" haha that's legit
+
+I have injected code before... sucks to go that route but why not. I'm interested in getting it done, this is a tool for me. I have injected code before eg. the YT hide tiles on load [work](https://github.com/jdc-cunningham/chrome-extension-code-injector) I did.
+
+So I think I'll do something like the action tries to inject this code, if it's injected already just toggle it.
+
+Yeah... I was trying to migrate to V3 like a good boy, but nah I want to get this done. This is a CRUD app I could crap out in 10 minutes but I'm stuck trying to figure out how to work around CE's security stuff which I'm not against, I just don't have the time/care to get into it right now.
+
+6:31 PM
+Okay I think I got it.
+
+The mechanism will be:
+- chrome extension icon will be clicked to show/hide the UI
+- the UI is injected at the start
+- the show/hide command is using `window.postMessage`
+
