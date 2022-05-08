@@ -55,3 +55,10 @@ The mechanism will be:
 - the UI is injected at the start
 - the show/hide command is using `window.postMessage`
 
+Unfortunately in 20 minutes I gotta stop/completely mind shift. Really want to make progress on the robot too but really want to prototype this. I'll do a max cap of another hour or two later on to get this to a working state.
+
+Goal for TLR is plotting boxes in ThreeJS as the robot hits them.
+
+Yeah dang will have to return to this in a bit.
+
+
