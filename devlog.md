@@ -35,6 +35,13 @@ Cool only thing I'm missing now is delete which I rarely use, the API method exi
 3:55 PM
 well this is at a usable state now, so I'll use it for now
 
+4:46 PM
+Ooh... Dunce boy just thought of something, is `window.postMessage` secure?
+
+Let me test it out...
+
+Yeap... it's accessible by the website damn...
+
 05/08/2022
 Finally have some time to work on this. I really want this because all this time I've just been saving tabs but never looking at them again.
 

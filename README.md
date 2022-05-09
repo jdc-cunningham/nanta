@@ -1,5 +1,8 @@
 <img src="./chrome-extension/icon128_dark.png"/>
 
+### Security flaw
+This is curently using `window.postMessage` as part of the comms layer and it is not secured/readable by any website. I need to come up with a fix for that.
+
 ### About
 Primarily this is a basic Chrome extension interface that accepts a tag and body along with relevant tabs.
 
