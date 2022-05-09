@@ -52,6 +52,12 @@ const style = `
       max-height: 50vh;
       overflow-y: auto;
     }
+
+    .nanta-ui__display.creating {
+      opacity: 0.7;
+      background-color: #dcdcdc;
+      cursor: wait;
+    }
     
     .nanta-ui__display.has-results {
       border-top: 1px solid #808080;
@@ -102,9 +108,22 @@ const html = `
   </div>
 `;
 
+// https://stackoverflow.com/a/4929629/2710227
+const dateNowYmd = () => {
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+
+  return `${yyyy}/${mm}/${dd}`;
+}
+
+// generally there should only be 3 calls updating these
+// init and true/false setters
 let searching = false;
 let activeNoteName = '';
 let updatingNote = false;
+let creatingNote = false;
 
 window.onload = () => {
   document.body.insertAdjacentHTML('beforeend', html);
@@ -114,7 +133,6 @@ window.onload = () => {
   let searchKeyPressTimeout = null;
 
   searchBox.addEventListener('keyup', (e) => {
-    console.log('>', searching);
     if (searching || updatingNote) return;
 
     clearTimeout(searchKeyPressTimeout);
@@ -126,7 +144,7 @@ window.onload = () => {
       display.innerHTML = ''; // empty
       display.classList.remove('has-results');
       activeNoteName = '';
-      
+
       searching = true;
 
       window.postMessage({
@@ -154,7 +172,24 @@ window.addEventListener('message', (e) => {
     if (!notes.length) {
       display.innerHTML += `
         <div class="nanta-ui__search-result no-result">No results</div>
+        <button type="button" id="create-note">Create note</button>
       `;
+
+      const createNoteBtn = document.getElementById('create-note');
+
+      createNoteBtn.addEventListener('click', () => {
+        creatingNote = true;
+        display.classList.add('creating');
+
+        const activeSearchTerm = document.getElementById('nanta-search-input');
+
+        window.postMessage({
+          updateNote: {
+            noteName: activeSearchTerm.value,
+            noteBody: `created ${dateNowYmd()}`,
+          }
+        })
+      });
     }
 
     notes.forEach(note => {
@@ -194,8 +229,6 @@ window.addEventListener('message', (e) => {
 
       clearTimeout(modifyTimeout);
 
-      console.log('keyup');
-
       modifyTimeout = setTimeout(() => {
         updatingNote = true;
         body.classList.add('saving');
@@ -210,13 +243,20 @@ window.addEventListener('message', (e) => {
     });
   }
 
+  // callback for create/update
   if (msg?.apiNoteBodyUpdateResponse) {
-    console.log(msg.apiNoteBodyUpdateRepsonse);
     // artificial delay
     setTimeout(() => {
-      const body = document.getElementById('active-note-body');
-      body.classList.remove('saving');
-      updatingNote = false;
+      if (updatingNote) {
+        const body = document.getElementById('active-note-body');
+        body.classList.remove('saving');
+        updatingNote = false;
+      }
+
+      if (creatingNote) {
+        display.classList.remove('creating');
+        creatingNote = false;
+      }
     }, 250);
   }
 });

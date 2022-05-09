@@ -40,22 +40,18 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
 
   if (msg?.searchTerm) {
     postAjax(`${API_BASE_URL}/search-notes`, {noteQueryStr: msg.searchTerm}, (response) => {
-      console.log(response);
       sendMessageToUi({apiResponse: response});
     });
   }
 
   if (msg?.getNoteBody) {
     postAjax(`${API_BASE_URL}/get-note-body`, {noteId: msg.getNoteBody}, (response) => {
-      console.log(response);
       sendMessageToUi({apiNoteBodyResponse: response});
     });
   }
 
   if (msg?.updateNote) {
     const { noteName, noteBody } = msg.updateNote;
-
-    console.log(msg.updateNote);
 
     postAjax(
       `${API_BASE_URL}/save-note`,

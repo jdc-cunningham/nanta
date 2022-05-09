@@ -27,6 +27,11 @@ Oof I forgot how I made this API a "new-row everytime" type... it's cool for ver
 3:30 PM
 Think I'll just go ahead and add the note creation too while I'm at it, just added update
 
+hmm... I think I'll be a good boy and add a contextual wrapper around window.postMessage that'll make it easier to understand what it's doing
+
+3:48 PM
+Cool only thing I'm missing now is delete which I rarely use, the API method exists but yeah
+
 05/08/2022
 Finally have some time to work on this. I really want this because all this time I've just been saving tabs but never looking at them again.
 
