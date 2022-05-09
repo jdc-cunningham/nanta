@@ -147,3 +147,5 @@ For now I'll just do the CRUD functionality of reading/writing notes.
 
 2:51 AM
 I'm losing steam... I made good progress though now it's just work... trivial stuff
+
+For example I will partially watch some YT video but not finish it, then I close all tabs in Chrome to start with a fresh slate. I could capture those YT links and put them on a watch queue to pick up later if I'm looking for something to watch.
