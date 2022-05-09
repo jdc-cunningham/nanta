@@ -5,14 +5,12 @@ s.src = chrome.extension.getURL('nanta-ui-logic.js');
 // clean up call back
 s.onload = function() {
   s.parentNode.removeChild(s);
-
-  // send to background script
 };
 
 window.addEventListener('message', (e) => {
   const msg = e.data;
 
-  if (msg?.search) {
+  if (msg?.searchTerm) {
     chrome.runtime.sendMessage({searchTerm: msg.searchTerm});
   }
 });
@@ -32,7 +30,13 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
     }
   }
 
+  if (msg?.apiResponse) {
+    window.postMessage({
+      apiResponse: msg.apiResponse
+    })
+  }
+
   // have to call this to avoid error
-  callback('');
+  callback('ui ack');
 });
 

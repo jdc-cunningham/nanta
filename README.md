@@ -1,4 +1,4 @@
-<img src="./chrome-extension/icon128_light.png"/>
+<img src="./chrome-extension/icon128_dark.png"/>
 
 ### About
 Primarily this is a basic Chrome extension interface that accepts a tag and body along with relevant tabs.

@@ -1,5 +1,3 @@
-const API_BASE_URL = 'http://192.168.1.144:5003';
-
 const style = `
   <style>
     .nanta-ui {
@@ -28,24 +26,17 @@ const html = `
     <div class="nanta-ui__search">
       <input id="nanta-search-input" type="text" placeholder="search"/>
     </div>
-    <div class="nanta-ui__display"><div>
+    <div id="nanta-ui-display" class="nanta-ui__display"><div>
   </div>
 `;
 
+let searching = false;
+
 window.onload = () => {
-  window.addEventListener('message', (e) => {
-    const msg = e.data;
-
-    if (msg?.apiResponse) {
-      console.log('api res', apiResponse);
-    }
-  });
-
   document.body.insertAdjacentHTML('beforeend', html);
 
   const searchBox = document.getElementById('nanta-search-input');
   let searchKeyPressTimeout = null;
-  let searching = false;
 
   searchBox.addEventListener('keyup', (e) => {
     if (searching) return;
@@ -63,3 +54,17 @@ window.onload = () => {
     }, 250);
   });
 };
+
+window.addEventListener('message', (e) => {
+  const msg = e.data;
+
+  if (msg?.apiResponse) {
+    const display = document.getElementById('nanta-ui-display');
+
+    JSON.parse(msg.apiResponse).notes.forEach(note => {
+      display.innerHTML += `<div class="nanta-ui__search-result" id="${note.id}">${note.name}</div>`;
+    });
+  }
+
+  setSearching = false;
+});

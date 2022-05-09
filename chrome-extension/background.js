@@ -1,9 +1,3 @@
-// chrome.runtime.onInstalled.addListener(() => {
-//   window.addEventListener('message', (e) => {
-//     console.log(e.data);
-//   });
-// });
-
 const API_BASE_URL = 'http://192.168.1.144:5003';
 
 const postAjax = (url, data, success) => {
@@ -27,9 +21,9 @@ const postAjax = (url, data, success) => {
  * @param {Object} msg 
  */
 const sendMessageToUi = (msg) => {
-  chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-    chrome.tabs.sendMessage(tabs[0].id, msg, function(response) {
-      console.log(response);
+  chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
+    chrome.tabs.sendMessage(tabs[0].id, msg, (response) => {
+      // not doing anything with response yet
     });  
   });
 }
@@ -42,13 +36,10 @@ chrome.browserAction.onClicked.addListener((tab) => {
 // use this for notification, change ui
 // the water droplet thing
 chrome.runtime.onMessage.addListener((request, sender, callback) => {
-  const msg = request.message;
-
-  console.log(msg);
+  const msg = request;
 
   if (msg?.searchTerm) {
-    postAjax(`${API_BASE_URL}/search-notes`, msg, (response) => {
-      console.log('api res');
+    postAjax(`${API_BASE_URL}/search-notes`, {noteQueryStr: msg.searchTerm}, (response) => {
       sendMessageToUi({apiResponse: response});
     });
   }
@@ -59,5 +50,5 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
     });
   }
 
-  callback('');
+  callback('bg ack');
 });

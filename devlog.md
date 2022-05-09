@@ -130,3 +130,12 @@ And Postman is great to test the API that's running already
 
 This is another tool I imagine I will use a lot to track things.
 
+I seem to have broken something during my refactoring
+
+Ooh nice song
+Masques III Midnight Oasis
+
+2:32 AM
+Omg yes finally... running into dumb problems like it's a JSON text or wrong key being accessed... but it works. I have done an API query from an injected DOM and renderd it over the website I'm on.
+
+
