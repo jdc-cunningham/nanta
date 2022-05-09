@@ -46,6 +46,14 @@ Great write up [here](https://owasp.org/www-chapter-london/assets/slides/OWASPLo
 
 Some info [here](https://stackoverflow.com/questions/28024563/how-to-do-secure-communication-from-any-web-page-to-a-chrome-extension)
 
+Oh man... I think I have to redo what I have... and just stick entirely in `background.js` because that's where the API calls are happening and really that's what matters. The UI can be built there.
+
+The only thing that sucks is the position can't be controlled... but I think I can completely work around the whole "don't get in this website's context" bit.
+
+Also I could still use what I have for the web-context like copying text from the current website.
+
+Well... I got time.
+
 05/08/2022
 Finally have some time to work on this. I really want this because all this time I've just been saving tabs but never looking at them again.
 
