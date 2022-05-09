@@ -44,9 +44,9 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
     });
   }
 
-  if (msg?.noteId) {
-    postAjax(`${API_BASE_URL}/get-note-body`, msg, (response) => {
-      sendMessageToUi({apiResponse: response});
+  if (msg?.getNoteBody) {
+    postAjax(`${API_BASE_URL}/get-note-body`, {noteId: msg.getNoteBody}, (response) => {
+      sendMessageToUi({apiNoteBodyResponse: response});
     });
   }
 

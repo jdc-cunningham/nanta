@@ -13,6 +13,10 @@ window.addEventListener('message', (e) => {
   if (msg?.searchTerm) {
     chrome.runtime.sendMessage({searchTerm: msg.searchTerm});
   }
+
+  if (msg?.getNoteBody) {
+    chrome.runtime.sendMessage({getNoteBody: msg.getNoteBody})
+  }
 });
 
 // receive messages from chrome extension icon
@@ -33,7 +37,13 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
   if (msg?.apiResponse) {
     window.postMessage({
       apiResponse: msg.apiResponse
-    })
+    });
+  }
+
+  if (msg?.apiNoteBodyResponse) {
+    window.postMessage({
+      apiNoteBodyResponse: msg.apiNoteBodyResponse
+    });
   }
 
   // have to call this to avoid error

@@ -24,6 +24,7 @@ const style = `
       background-color: white;
       padding: 1rem;
       pointer-events: all;
+      max-width: 50vw;
     }
 
     #hide-nanta-ui {
@@ -55,6 +56,15 @@ const style = `
     .nanta-ui__display.has-results {
       border-top: 1px solid #808080;
       margin-top: 1rem;
+      cursor: pointer;
+    }
+
+    .nanta-ui__search-result {
+      padding: 0.25rem 0.5rem;
+    }
+
+    .nanta-ui__search-result:hover {
+      background-color: #dcdcdc;
     }
   </style>
 `;
@@ -113,17 +123,36 @@ window.onload = () => {
 
 window.addEventListener('message', (e) => {
   const msg = e.data;
+  const display = document.getElementById('nanta-ui-display');
 
   if (msg?.apiResponse) {
-    const display = document.getElementById('nanta-ui-display');
-
     display.classList.add('has-results');
 
     JSON.parse(msg.apiResponse).notes.forEach(note => {
       if (!note?.id) return;
-      display.innerHTML += `<div class="nanta-ui__search-result" id="${note.id}">${note.name}</div>`;
+      display.innerHTML += `<div class="nanta-ui__search-result" id="${note.id}"></div>`;
+      const searchResultRow = document.getElementById(note.id);
+      searchResultRow.innerText = note.name;
     });
+
+    // add event listeners
+    document.querySelectorAll('.nanta-ui__search-result').forEach(searchResult => {
+      searchResult.addEventListener('click', (el) => {
+        const noteId = el.target.getAttribute('id');
+
+        window.postMessage({
+          getNoteBody: noteId
+        });
+      });
+    });
+    
+    searching = false;
   }
 
-  searching = false;
+  if (msg?.apiNoteBodyResponse) {
+    display.innerHTML = '';
+    display.innerHTML = `<div id="search-result-body" class="nanta-ui__search-result-body"></div>`;
+    const body = document.getElementById('search-result-body');
+    body.innerText = JSON.parse(msg.apiNoteBodyResponse)[0].body; // ehh anti-XSS attempt
+  }
 });

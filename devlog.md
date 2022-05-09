@@ -7,7 +7,16 @@ Alright back on this... kind of a half-burnt day didn't sleep too much
 12:58 PM
 Ahh man... I'm not feeling it
 
+Your boy's gotta start grinding that leet and DSA
 
+I've never really been a strong algo person.
+
+If nothing changes in a month or two I'll be looking for a new job.
+
+I'll work on getting display done, there's nothing to figure out it's just wiring but I'm spent today.
+
+1:19 PM
+Added note viewing
 
 05/08/2022
 Finally have some time to work on this. I really want this because all this time I've just been saving tabs but never looking at them again.
