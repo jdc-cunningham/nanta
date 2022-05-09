@@ -1,6 +1,14 @@
 # refer
 https://developer.chrome.com/docs/extensions/mv3/user_interface/
 
+05/09/2022
+Alright back on this... kind of a half-burnt day didn't sleep too much
+
+12:58 PM
+Ahh man... I'm not feeling it
+
+
+
 05/08/2022
 Finally have some time to work on this. I really want this because all this time I've just been saving tabs but never looking at them again.
 

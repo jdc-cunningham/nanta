@@ -13,6 +13,7 @@ const style = `
       justify-content: center;
       flex-direction: column;
       padding: 2rem;
+      pointer-events: none; /* allow cursor pass through for text select */
     }
 
     .nanta-ui.hidden {
@@ -22,6 +23,7 @@ const style = `
     .nanta-ui__container {
       background-color: white;
       padding: 1rem;
+      pointer-events: all;
     }
 
     #hide-nanta-ui {
@@ -38,6 +40,7 @@ const style = `
       font-weight: bold;
       cursor: pointer;
       margin-bottom: 0.5rem;
+      pointer-events: all;
     }
 
     #hide-nanta-ui span {
@@ -47,6 +50,11 @@ const style = `
     .nanta-ui__display {
       max-height: 50vh;
       overflow-y: auto;
+    }
+    
+    .nanta-ui__display.has-results {
+      border-top: 1px solid #808080;
+      margin-top: 1rem;
     }
   </style>
 `;
@@ -87,6 +95,7 @@ window.onload = () => {
       const display = document.getElementById('nanta-ui-display');
 
       display.innerHTML = ''; // empty
+      display.classList.remove('has-results');
       
       searching = true;
 
@@ -107,6 +116,8 @@ window.addEventListener('message', (e) => {
 
   if (msg?.apiResponse) {
     const display = document.getElementById('nanta-ui-display');
+
+    display.classList.add('has-results');
 
     JSON.parse(msg.apiResponse).notes.forEach(note => {
       if (!note?.id) return;
