@@ -61,4 +61,38 @@ Goal for TLR is plotting boxes in ThreeJS as the robot hits them.
 
 Yeah dang will have to return to this in a bit.
 
+10:33 PM
+Alright back at it, I'm already feeling spent crap, I did just eat so maybe I gotta wait a little bit
+
+procrastinating? omg literally me... also some police cars outside my apt man... keep thinking bullet gonna come outta nowhere and hit me.
+
+Alright let's get that bread (there's no bread this is free)
+
+Also my micro crypto trader is at 26% loss nice STONKS.
+
+Ugh my fingers are oily damn it, anyway the postMessaging works pretty cool
+
+Actually it's not, also the event fires from browserAction increment/keep increasing by 1 interesting
+
+No it's fine I was just rebinding every time.
+
+Still the two-way comms is not working as I thought it's posting to itself.
+
+Okay so I'm not using postMessage I'm using chrome.runtime.onMessage for the injected to browser action (chrome extension icon) which I don't really need, I need the other one which is the chrome tabs.
+
+[reference](https://stackoverflow.com/questions/25756807/calling-content-script-function-on-chrome-browseraction-onclicked)
+
+[reference](https://stackoverflow.com/questions/14245334/sendmessage-from-extension-background-or-popup-to-content-script-doesnt-work)
+
+Also it's not the injected code logic that's getting the ping from the chrome extension icon it's the loader (content script).
+
+So I'll have to bridge that too.
+
+Lol as they put "do not cross" tape lines across my parking lot, nice.
+
+11:40 PM
+Alright I'm done watching
+
+I'm still trying to wrap my head around how to architect this thing based on what I have to work with.
+
 

@@ -10,7 +10,11 @@
       "js": ["script-loader.js"]
     }
   ],
-  "web_accessible_resources": ["nanta-ui-logic-script.js"],
+  "web_accessible_resources": [
+    "nanta-ui/style.js",
+    "nanta-ui/ui.js",
+    "nanta-ui/logic.js"
+  ],
   "icons": {
     "16": "icon16_dark.png",
     "48": "icon48_dark.png",
