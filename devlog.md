@@ -32,6 +32,9 @@ hmm... I think I'll be a good boy and add a contextual wrapper around window.pos
 3:48 PM
 Cool only thing I'm missing now is delete which I rarely use, the API method exists but yeah
 
+3:55 PM
+well this is at a usable state now, so I'll use it for now
+
 05/08/2022
 Finally have some time to work on this. I really want this because all this time I've just been saving tabs but never looking at them again.
 
