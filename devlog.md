@@ -138,4 +138,12 @@ Masques III Midnight Oasis
 2:32 AM
 Omg yes finally... running into dumb problems like it's a JSON text or wrong key being accessed... but it works. I have done an API query from an injected DOM and renderd it over the website I'm on.
 
+2:38 AM
+So now I'll just build out the rest of the CRUD functionality mostly front end work since the API already exists.
 
+Ooh... I already have the chrome query all tabs... so I'll definitely add that for the "save tabs" feature.
+
+For now I'll just do the CRUD functionality of reading/writing notes.
+
+2:51 AM
+I'm losing steam... I made good progress though now it's just work... trivial stuff

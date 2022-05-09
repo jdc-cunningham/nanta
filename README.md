@@ -4,7 +4,7 @@
 Primarily this is a basic Chrome extension interface that accepts a tag and body along with relevant tabs.
 
 ### Demo
-
+<img src="./demo.gif"/>
 
 ### Background
 I spend most of my time in front of a computer, particularly within reach/in Chrome. So I want to make a note taking Chrome extension app. This helps me jot down notes and close that tab, not really a RAM concern just wanting to keep track of anything I found interesting at the time.
