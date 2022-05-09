@@ -42,6 +42,10 @@ Let me test it out...
 
 Yeap... it's accessible by the website damn...
 
+Great write up [here](https://owasp.org/www-chapter-london/assets/slides/OWASPLondon_PostMessage_Security_in_Chrome_Extensions.pdf)
+
+Some info [here](https://stackoverflow.com/questions/28024563/how-to-do-secure-communication-from-any-web-page-to-a-chrome-extension)
+
 05/08/2022
 Finally have some time to work on this. I really want this because all this time I've just been saving tabs but never looking at them again.
 

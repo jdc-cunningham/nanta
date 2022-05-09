@@ -160,6 +160,9 @@ window.onload = () => {
 };
 
 window.addEventListener('message', (e) => {
+  // check origin
+  if (e.source !== window) return;
+
   const msg = e.data;
   const display = document.getElementById('nanta-ui-display');
 

@@ -8,6 +8,9 @@ s.onload = function() {
 };
 
 window.addEventListener('message', (e) => {
+  // check origin
+  if (e.source !== window) return;
+
   const msg = e.data;
 
   if (msg?.searchTerm) {
