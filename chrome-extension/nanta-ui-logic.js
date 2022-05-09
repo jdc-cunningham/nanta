@@ -56,15 +56,31 @@ const style = `
     .nanta-ui__display.has-results {
       border-top: 1px solid #808080;
       margin-top: 1rem;
-      cursor: pointer;
     }
 
     .nanta-ui__search-result {
       padding: 0.25rem 0.5rem;
+      cursor: pointer;
     }
 
-    .nanta-ui__search-result:hover {
+    .nanta-ui__search-result:hover:not(.no-result) {
       background-color: #dcdcdc;
+    }
+
+    .nanta-ui__active-note-body {
+      min-width: 350px;
+      min-height: 200px;
+      margin-top: 1rem;
+    }
+
+    .nanta-ui__search-result.no-result {
+      cursor: default;
+    }
+
+    .nanta-ui__active-note-body.saving {
+      opacity: 0.7;
+      background-color: #dcdcdc;
+      cursor: wait;
     }
   </style>
 `;
@@ -87,6 +103,8 @@ const html = `
 `;
 
 let searching = false;
+let activeNoteName = '';
+let updatingNote = false;
 
 window.onload = () => {
   document.body.insertAdjacentHTML('beforeend', html);
@@ -96,7 +114,8 @@ window.onload = () => {
   let searchKeyPressTimeout = null;
 
   searchBox.addEventListener('keyup', (e) => {
-    if (searching) return;
+    console.log('>', searching);
+    if (searching || updatingNote) return;
 
     clearTimeout(searchKeyPressTimeout);
 
@@ -106,6 +125,7 @@ window.onload = () => {
 
       display.innerHTML = ''; // empty
       display.classList.remove('has-results');
+      activeNoteName = '';
       
       searching = true;
 
@@ -126,12 +146,22 @@ window.addEventListener('message', (e) => {
   const display = document.getElementById('nanta-ui-display');
 
   if (msg?.apiResponse) {
-    display.classList.add('has-results');
+    const notes = JSON.parse(msg.apiResponse).notes;
 
-    JSON.parse(msg.apiResponse).notes.forEach(note => {
+    searching = false;
+    display.classList.add('has-results');
+    
+    if (!notes.length) {
+      display.innerHTML += `
+        <div class="nanta-ui__search-result no-result">No results</div>
+      `;
+    }
+
+    notes.forEach(note => {
       if (!note?.id) return;
-      display.innerHTML += `<div class="nanta-ui__search-result" id="${note.id}"></div>`;
-      const searchResultRow = document.getElementById(note.id);
+      const mostRecentNoteBodyId = note["MAX(id)"];
+      display.innerHTML += `<div class="nanta-ui__search-result" id="${mostRecentNoteBodyId}"></div>`;
+      const searchResultRow = document.getElementById(mostRecentNoteBodyId);
       searchResultRow.innerText = note.name;
     });
 
@@ -140,19 +170,53 @@ window.addEventListener('message', (e) => {
       searchResult.addEventListener('click', (el) => {
         const noteId = el.target.getAttribute('id');
 
+        activeNoteName = el.target.innerText;
+        
         window.postMessage({
           getNoteBody: noteId
         });
       });
     });
-    
-    searching = false;
   }
 
   if (msg?.apiNoteBodyResponse) {
+    display.classList.remove('has-results');
     display.innerHTML = '';
-    display.innerHTML = `<div id="search-result-body" class="nanta-ui__search-result-body"></div>`;
-    const body = document.getElementById('search-result-body');
-    body.innerText = JSON.parse(msg.apiNoteBodyResponse)[0].body; // ehh anti-XSS attempt
+    display.innerHTML = `<textarea id="active-note-body" class="nanta-ui__active-note-body"></textarea>`;
+    const body = document.getElementById('active-note-body');
+    body.value = JSON.parse(msg.apiNoteBodyResponse)[0].body; // ehh anti-XSS attempt
+
+    let modifyTimeout = null;
+
+    // add on update listener
+    document.getElementById('active-note-body').addEventListener('keyup', (e) => {
+      if (updatingNote) return;
+
+      clearTimeout(modifyTimeout);
+
+      console.log('keyup');
+
+      modifyTimeout = setTimeout(() => {
+        updatingNote = true;
+        body.classList.add('saving');
+
+        window.postMessage({
+          updateNote: {
+            noteName: activeNoteName,
+            noteBody: e.target.value,
+          }
+        })
+      }, 500);
+    });
+  }
+
+  if (msg?.apiNoteBodyUpdateResponse) {
+    console.log(msg.apiNoteBodyUpdateRepsonse);
+    // artificial delay
+    setTimeout(() => {
+      const body = document.getElementById('active-note-body');
+      body.classList.remove('saving');
+      updatingNote = false;
+    }, 250);
   }
 });

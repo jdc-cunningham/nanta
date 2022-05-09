@@ -18,6 +18,15 @@ I'll work on getting display done, there's nothing to figure out it's just wirin
 1:19 PM
 Added note viewing
 
+2:41 PM
+Little distracted but I think I can add onmodify save
+
+2:52 PM
+Oof I forgot how I made this API a "new-row everytime" type... it's cool for versioning, don't have to search/update... but also why... you have an id, can update by id... this just means the database is massive, like a thousand char entry, modify it by 1 character results in 999 or 1001 new characters... damn
+
+3:30 PM
+Think I'll just go ahead and add the note creation too while I'm at it, just added update
+
 05/08/2022
 Finally have some time to work on this. I really want this because all this time I've just been saving tabs but never looking at them again.
 

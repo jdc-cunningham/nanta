@@ -15,7 +15,11 @@ window.addEventListener('message', (e) => {
   }
 
   if (msg?.getNoteBody) {
-    chrome.runtime.sendMessage({getNoteBody: msg.getNoteBody})
+    chrome.runtime.sendMessage({getNoteBody: msg.getNoteBody});
+  }
+
+  if (msg?.updateNote) {
+    chrome.runtime.sendMessage({updateNote: msg.updateNote});
   }
 });
 
@@ -43,6 +47,12 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
   if (msg?.apiNoteBodyResponse) {
     window.postMessage({
       apiNoteBodyResponse: msg.apiNoteBodyResponse
+    });
+  }
+
+  if (msg?.apiNoteBodyUpdateResponse) {
+    window.postMessage({
+      apiNoteBodyUpdateResponse: msg.apiNoteBodyUpdateResponse
     });
   }
 
