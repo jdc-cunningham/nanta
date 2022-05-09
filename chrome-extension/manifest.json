@@ -11,9 +11,7 @@
     }
   ],
   "web_accessible_resources": [
-    "nanta-ui/style.js",
-    "nanta-ui/ui.js",
-    "nanta-ui/logic.js"
+    "nanta-ui-logic.js"
   ],
   "icons": {
     "16": "icon16_dark.png",
