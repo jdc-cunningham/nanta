@@ -95,4 +95,38 @@ Alright I'm done watching
 
 I'm still trying to wrap my head around how to architect this thing based on what I have to work with.
 
+12:55 AM
+Finally got this [error](https://stackoverflow.com/questions/54126343/how-to-fix-unchecked-runtime-lasterror-the-message-port-closed-before-a-respon) to go away "...port closed before...".
+
+So I've got everything working, also had this thought of a background job that pings the icon with a notification.
+
+future work though
+
+1:04 AM
+Wow this is great, it's working, next thing is adding the post request mechanism
+
+1:15 AM
+Hmm this might have been dumb/obvious, but I can't call APIs from inside the injected DOM on random websites... so it looks like I'll have to start the API call from the injected dom by talking to the `background.js` script and then send the data back.
+
+1:22 AM
+Yeap... mixed https/http now hmm
+
+Omg I got it okay... so the request has to be done in background.js
+
+So now I gotta figure out how to talk to background.js from the injected dom... hmm
+
+1:26 AM
+Okay the basics are working now... need to summarize this
+
+1:43 AM
+Making good progress this took me longer than I anticipated
+
+2:07 AM
+This is kind of funny, I made this [API](https://github.com/jdc-cunningham/cross-platform-app/blob/master/shared-api/api/methods/notes.js) a while back and I have to remember how it works.
+
+I have been using it almost everyday with the cross platform desktop app. The other tool I made that I use almost on a daily basis for the last 4 years or so is the Twilio SMS app that I use to remind myself of stuff in the future.
+
+And Postman is great to test the API that's running already
+
+This is another tool I imagine I will use a lot to track things.
 
