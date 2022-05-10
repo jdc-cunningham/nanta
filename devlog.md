@@ -1,6 +1,22 @@
 # refer
 https://developer.chrome.com/docs/extensions/mv3/user_interface/
 
+05/10/2022
+
+3:54 PM
+I'm a little beat/spent. Was odd I just naturaly woke up like 7 hrs later or so of sleep.
+I have already spent my "golden hours" on photography, see this turtle I found/thought it was dead.
+
+<img src="./devlog-media/05-10-2022--turtle.JPG" width="800"/>
+
+Anyway I'm gonna try and get this extension reworked.
+
+I need to get that second wind and clear my mind for the next big block of day-job work I have to do.
+
+I think in the future injected stuff has some use, but I have to think about the security of the data/context.
+
+
+
 05/09/2022
 Alright back on this... kind of a half-burnt day didn't sleep too much
 

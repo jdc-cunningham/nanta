@@ -1,0 +1,49 @@
+body {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 0.5rem;
+  min-width: 350px;
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+.nanta-ui,
+.nanta-ui__container,
+.nanta-ui__search {
+  width: 100%;
+}
+
+#nanta-search-input {
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  width: 100%;
+}
+
+.nanta-ui__display {
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.nanta-ui__display.has-results {
+  margin-top: 0.5rem;
+}
+
+.nanta-ui__search-result {
+  font-size: 1rem;
+  padding: 0.25rem;
+  cursor: pointer;
+}
+
+.nanta-ui__search-result:hover {
+  background-color: #dcdcdc;
+}
+
+.nanta-ui__active-note-body {
+  width: 100%;
+  min-height: 250px;
+  margin-top: 0.5rem;
+}

@@ -3,23 +3,14 @@
   "version": "1.0",
   "description": "Save notes and tabs, view previous entries",
   "manifest_version": 2,
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "run_at": "document_start",
-      "js": ["script-loader.js"]
-    }
-  ],
-  "web_accessible_resources": [
-    "nanta-ui-logic.js"
-  ],
   "icons": {
     "16": "icon16_dark.png",
     "48": "icon48_dark.png",
     "128": "icon128_dark.png"
   },
   "browser_action": {
-    "default_icon": "icon16_dark.png"
+    "default_icon": "icon16_dark.png",
+    "default_popup": "./popup-ui/index.html"
   },
   "background": {
     "scripts": ["background.js"]
