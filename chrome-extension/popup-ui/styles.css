@@ -33,9 +33,32 @@ body * {
 }
 
 .nanta-ui__search-result {
+  position: relative;
+  width: 100%;
   font-size: 1rem;
   padding: 0.25rem;
   cursor: pointer;
+}
+
+.nanta-ui__search-result span {
+  width: 100%;
+}
+
+.nanta-ui__search-result button {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 18px;
+  height: 18px;
+  border: 0;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  background-color: red;
+  color: white;
+  font-weight: solid;
 }
 
 .nanta-ui__search-result:hover {
@@ -46,4 +69,8 @@ body * {
   width: 100%;
   min-height: 250px;
   margin-top: 0.5rem;
+}
+
+.nanta-ui__new-entry {
+  font-size: 1rem;
 }

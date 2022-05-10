@@ -1,4 +1,7 @@
 const searchInput = document.getElementById('nanta-search-input');
+const display = document.getElementById('nanta-ui-display');
+
+alert('yo');
 
 // generally there should only be 3 calls updating these
 // init and true/false setters
@@ -18,6 +21,11 @@ const dateNowYmd = () => {
   return `${yyyy}/${mm}/${dd}`;
 }
 
+// https://developer.chrome.com/docs/extensions/mv2/security/
+const sanitizeInput = (input) => {
+  return input.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+}
+
 searchInput.addEventListener('keyup', (e) => {
   if (searching || updatingNote) return;
 
@@ -25,7 +33,6 @@ searchInput.addEventListener('keyup', (e) => {
 
   searchKeyPressTimeout = setTimeout(() => {
     const searchTerm = e.target.value;
-    const display = document.getElementById('nanta-ui-display');
 
     display.innerHTML = ''; // empty
     display.classList.remove('has-results');
@@ -41,7 +48,6 @@ searchInput.addEventListener('keyup', (e) => {
 
 chrome.runtime.onMessage.addListener((request, sender, callback) => {
   const msg = request;
-  const display = document.getElementById('nanta-ui-display');
 
   if (msg?.apiResponse) {
     const notes = JSON.parse(msg.apiResponse).notes;
@@ -51,7 +57,7 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
     
     if (!notes.length) {
       display.innerHTML += `
-        <div class="nanta-ui__search-result no-result">No results</div>
+        <div id="no-results-row" class="nanta-ui__search-result no-result">No results</div>
         <button type="button" id="create-note">Create note</button>
       `;
 
@@ -75,8 +81,11 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
     notes.forEach(note => {
       if (!note?.id) return;
       const mostRecentNoteBodyId = note["MAX(id)"];
-      display.innerHTML += `<div class="nanta-ui__search-result" id="${mostRecentNoteBodyId}"></div>`;
-      const searchResultRow = document.getElementById(mostRecentNoteBodyId);
+      display.innerHTML += `<div class="nanta-ui__search-result" id="${mostRecentNoteBodyId}">
+        <span id="${mostRecentNoteBodyId}-span"></span>
+        <button type="button">x</button>
+      </div>`;
+      const searchResultRow = document.getElementById(`${mostRecentNoteBodyId}-span`);
       searchResultRow.innerText = note.name;
     });
 
@@ -116,7 +125,7 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
         chrome.runtime.sendMessage({
           updateNote: {
             noteName: activeNoteName,
-            noteBody: e.target.value,
+            noteBody: sanitizeInput(e.target.value),
           }
         })
       }, 500);
@@ -136,6 +145,7 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
       if (creatingNote) {
         display.classList.remove('creating');
         creatingNote = false;
+        display.innerHTML = '<p class="nanta-ui__new-entry">Entry created!</p>';
       }
     }, 250);
   }
