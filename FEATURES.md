@@ -1,0 +1,6 @@
+- the default notes are recently shown or pinned
+- save tabs as a topic
+- reminders that show up in this UI/exclamation point on the extension icon
+- text analysis like on HN
+  - word freq
+  - general consensus
