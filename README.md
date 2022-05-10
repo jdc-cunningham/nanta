@@ -9,7 +9,7 @@ This is curently using `window.postMessage` as part of the comms layer and it is
 Primarily this is a basic Chrome extension interface that accepts a tag and body along with relevant tabs.
 
 ### Demo
-<img src="./demo.gif"/>
+#### [update this after rewrite]
 
 ### Background
 I spend most of my time in front of a computer, particularly within reach/in Chrome. So I want to make a note taking Chrome extension app. This helps me jot down notes and close that tab, not really a RAM concern just wanting to keep track of anything I found interesting at the time.
@@ -21,6 +21,6 @@ I am still working on a centralized personal data store since I have other note 
 ### How it works
 This is not the only way to do this but how I got it to work for what I need. See the diagram below.
 
-<img src="./nanta-ce-comms.png"/>
+#### [update this after rewrite]
 
 These are primarily notes to myself if I want to make something like this again in the future.
