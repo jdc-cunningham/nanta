@@ -54,6 +54,17 @@ Also I could still use what I have for the web-context like copying text from th
 
 Well... I got time.
 
+8:02 PM
+I'm spent... will try again tomorrow it will be pretty fast to remake it in `background.js` context only.
+
+Oh okay [this](https://developer.chrome.com/docs/extensions/mv2/security/) was talking about content scripts.
+
+Background looks good so far, anyway these are just learning notes not like my bank account info or something.
+
+Okay [this](https://stackoverflow.com/a/17293075/2710227) says background pages are as secure as what Chrome uses to store passwords (I never allow this)
+
+Anyway I think it'll be better, with the UI being closer to the button... less mouse travel.
+
 05/08/2022
 Finally have some time to work on this. I really want this because all this time I've just been saving tabs but never looking at them again.
 
