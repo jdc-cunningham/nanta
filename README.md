@@ -1,10 +1,5 @@
 <img src="./chrome-extension/icon128_dark.png"/>
 
-
-# DO NOT USE!
-### Security flaw
-This is curently using `window.postMessage` as part of the comms layer and it is not secured/readable by any website. I need to come up with a fix for that.
-
 ### About
 Primarily this is a basic Chrome extension interface that accepts a tag and body along with relevant tabs.
 
@@ -19,8 +14,7 @@ I have made a couple but they're not really full fledged (no data store/requests
 I am still working on a centralized personal data store since I have other note taking methods that are using their own data stores.
 
 ### How it works
-This is not the only way to do this but how I got it to work for what I need. See the diagram below.
+`logic.js` is the JS running for the popup UI, the API calls are done on the background page side `background.js`. The API is a local one no auth/assumed to be secure.
 
-#### [update this after rewrite]
-
-These are primarily notes to myself if I want to make something like this again in the future.
+### Disclaimer
+Use at your own risk. I am not a security expert/primarily just intend to use this for personal note taking about random topics I want to learn about. `background.js` is supposedly [as secure as what Chrome password manager uses](https://stackoverflow.com/questions/17287553/chrome-extension-storing-variables-in-background-page-is-secure/17293075#17293075).

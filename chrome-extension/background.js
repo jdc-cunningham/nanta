@@ -50,5 +50,19 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
     );
   }
 
+  if (msg?.deleteNote) {
+    const { noteName } = msg.deleteNote;
+
+    postAjax(
+      `${API_BASE_URL}/delete-note`,
+      {
+        noteName
+      },
+      (response) => {
+        chrome.runtime.sendMessage({apiNoteBodyUpdateResponse: response});
+      }
+    );
+  }
+
   callback('bg ack');
 });

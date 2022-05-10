@@ -13,7 +13,15 @@
       <div class="nanta-ui__search">
         <input id="nanta-search-input" type="text" placeholder="search notes"/>
       </div>
-      <div id="nanta-ui-display" class="nanta-ui__display"><div>
+      <div id="nanta-ui-display" class="nanta-ui__display"></div>
+    </div>
+    <div id="nanta-ui-modal" class="nanta-ui__modal hidden">
+      <h2>Are you sure you want to delete this note?</h2>
+      <h3 id="nanta-ui-modal__sub-text"></h3>
+      <span>
+        <button id="nanta-ui-modal--btn-yes" type="button">Yes</button>
+        <button id="nanta-ui-modal--btn-no" type="button">No</button>
+      </span>
     </div>
   </div>
   <script src="logic.js"></script>

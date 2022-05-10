@@ -15,7 +15,10 @@ I need to get that second wind and clear my mind for the next big block of day-j
 
 I think in the future injected stuff has some use, but I have to think about the security of the data/context.
 
-
+5:59 PM
+Damn... the notes count is 53,308
+Delete takes a long time... interesting it's using `mysql2` and `innoDB`
+This is because of that dumb decision of generating new notes every change
 
 05/09/2022
 Alright back on this... kind of a half-burnt day didn't sleep too much

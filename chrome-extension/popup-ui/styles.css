@@ -3,7 +3,6 @@ body {
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
-  padding: 0.5rem;
   min-width: 350px;
 }
 
@@ -14,7 +13,20 @@ body * {
 .nanta-ui,
 .nanta-ui__container,
 .nanta-ui__search {
+  display: flex;
   width: 100%;
+}
+
+.nanta-ui {
+  position: relative;
+}
+
+.nanta-ui.delete-modal-open {
+  min-height: 250px;
+}
+
+.nanta-ui__container {
+  flex-direction: column;
 }
 
 #nanta-search-input {
@@ -58,7 +70,8 @@ body * {
   transform: translate(-50%, -50%);
   background-color: red;
   color: white;
-  font-weight: solid;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .nanta-ui__search-result:hover {
@@ -74,3 +87,52 @@ body * {
 .nanta-ui__new-entry {
   font-size: 1rem;
 }
+
+.nanta-ui__modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 1;
+  background-color: white;
+  border: 1px solid #808080;
+  padding: 0.5rem;
+}
+
+.nanta-ui__modal.hidden {
+  display: none;
+}
+
+.nanta-ui__modal.deleting {
+  background-color: #dcdcdc;
+  cursor: wait;
+}
+
+.nanta-ui__modal.deleting span button {
+  pointer-events: none;
+}
+
+.nanta-ui__modal span button {
+  z-index: 1;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.nanta-ui__modal span button:first-of-type {
+  margin-right: 1rem;
+}
+
+.nanta-ui__modal span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 1rem;
+} 
