@@ -127,7 +127,7 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
 
         const noteId = el.target.getAttribute('id');
 
-        activeNoteName = el.target.innerText;
+        activeNoteName = el.target.innerText.replace(/\nx/g, "");
         
         chrome.runtime.sendMessage({
           getNoteBody: noteId
